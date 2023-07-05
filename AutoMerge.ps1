@@ -40,8 +40,9 @@ foreach ($b in $branches)
 	}
 		
 }
-Write-Host '----------------------------------------' 
 foreach ($b in $FailedMerges)
 {
 	Write-Host 'Merge failed for:', $b -ForegroundColor Red
 }
+Write-Host '--------------Finished------------------' 
+
