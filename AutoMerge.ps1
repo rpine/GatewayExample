@@ -12,6 +12,9 @@ git checkout dev.updates
 $selectedBranch = Use-Branch-Menu 'Select a source branch to merge'
 $selectedBranch = $selectedBranch.replace('*','').Trim()
 Write-Host 'Selected branch from menu: ', $selectedBranch -ForegroundColor Green
+git checkout $branch
+git pull
+
 
 $branches = (git branch --list graph*)
 $FailedMerges = @()
@@ -32,6 +35,8 @@ foreach ($b in $branches)
 	else
 	{
 		Write-Host 'working folder empty, merge succeeded' -ForegroundColor DarkGreen
+		git commit -a -m "Automated commit message."
+		git push --set-upstream origin $branch
 	}
 		
 }
