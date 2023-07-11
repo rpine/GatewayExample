@@ -29,6 +29,7 @@ foreach ($b in $branches)
 	{
 		Write-Host 'working folder not empty' -ForegroundColor Red
 		$FailedMerges += $branch
+		git reset --hard
 	}
 	else
 	{
