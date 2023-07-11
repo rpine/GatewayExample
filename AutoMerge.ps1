@@ -15,7 +15,6 @@ Write-Host 'Selected branch from menu: ', $selectedBranch -ForegroundColor Green
 git checkout $branch
 git pull
 
-
 $branches = (git branch --list graph*)
 $FailedMerges = @()
 foreach ($b in $branches)
