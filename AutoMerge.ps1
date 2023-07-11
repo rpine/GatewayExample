@@ -21,7 +21,6 @@ $FailedMerges = @()
 foreach ($b in $branches)
 {
 	$branch = $b.replace('*','').Trim()
-	#$branch = $branch.Trim()
 	Write-Host 'Working on branch: ', $branch -ForegroundColor DarkGreen
 	git checkout $branch
 	git branch --list graph*
