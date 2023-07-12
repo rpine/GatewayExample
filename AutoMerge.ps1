@@ -24,7 +24,7 @@ foreach ($b in $branches)
 	git checkout $branch
 	git branch --list graph*
 	git merge $selectedBranch
-	$gruntResult = grunt default
+	$gruntResult = grunt build
 	Write-Host 'Grunt task result: ', $gruntResult, ' Exit Code: ', $LastExitCode -ForegroundColor Blue
 	$workingfiles = git status --porcelain
 	if ($workingfiles)
@@ -47,3 +47,7 @@ foreach ($b in $FailedMerges)
 }
 Write-Host '--------------Finished------------------' 
 
+function HardReset()
+{
+	git reset --hard
+}
