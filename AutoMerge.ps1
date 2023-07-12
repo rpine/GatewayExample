@@ -1,5 +1,14 @@
 Import-Module "./Branch-Menu.psm1";
 Get-Command -Module "Function-Use-Branch-Menu";
+
+function hardReset($msg, $branch)
+{
+	Write-Host $msg -ForegroundColor Red
+	$FailedMerges += $branch
+	git reset --hard
+}
+
+
 git checkout dev.updates
 #$frombranch = (
 #    git branch --all |
@@ -48,9 +57,3 @@ foreach ($b in $FailedMerges)
 }
 Write-Host '--------------Finished------------------' 
 
-function hardReset($msg, $branch)
-{
-	Write-Host $msg -ForegroundColor Red
-	$FailedMerges += $branch
-	git reset --hard
-}
