@@ -67,3 +67,15 @@ __recovery/
 
 # Boss dependency manager vendor folder https://github.com/HashLoad/boss
 modules/
+node_modules/
+release/
+syntax: glob
+src/.vscode/settings.json
+.vs/config/applicationhost.config
+bin/
+obj/
+reports/
+.vs/
+config.dat
+package-lock.json
+.vscode/tasks.json
