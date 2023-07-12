@@ -1,0 +1,18 @@
+{
+  "name": "gatewayexample",
+  "version": "1.0.0",
+  "description": "example project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roger Pine",
+  "license": "ISC",
+  "dependencies": {
+    "grunt-cli": "^1.4.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.6.1",
+    "grunt-contrib-uglify": "^5.2.2"
+  }
+}
