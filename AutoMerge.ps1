@@ -29,9 +29,10 @@ foreach ($b in $branches)
 	$workingfiles = git status --porcelain
 	if ($workingfiles)
 	{
-		Write-Host 'working folder not empty' -ForegroundColor Red
-		$FailedMerges += $branch
-		git reset --hard
+		hardReset('working folder not empty', $branch)
+		#Write-Host 'working folder not empty' -ForegroundColor Red
+		#$FailedMerges += $branch
+		#git reset --hard
 	}
 	else
 	{
@@ -47,7 +48,9 @@ foreach ($b in $FailedMerges)
 }
 Write-Host '--------------Finished------------------' 
 
-function HardReset()
+function hardReset($msg, $branch)
 {
+	Write-Host $msg -ForegroundColor Red
+	$FailedMerges += $branch
 	git reset --hard
 }
