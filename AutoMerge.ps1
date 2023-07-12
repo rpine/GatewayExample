@@ -24,6 +24,8 @@ foreach ($b in $branches)
 	git checkout $branch
 	git branch --list graph*
 	git merge $selectedBranch
+	$gruntResult = grunt default
+	Write-Host 'Grunt task result: ', $gruntResult -ForegroundColor Blue
 	$workingfiles = git status --porcelain
 	if ($workingfiles)
 	{
