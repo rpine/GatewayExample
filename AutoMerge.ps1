@@ -4,7 +4,6 @@ Get-Command -Module "Function-Use-Branch-Menu";
 function hardReset($msg, $branch)
 {
 	Write-Host $msg -ForegroundColor Red
-	$FailedMerges += $branch
 	git reset --hard
 }
 
@@ -77,6 +76,7 @@ foreach ($b in $branches)
 	if ($LastExitCode -ne 0)
 	{
 		hardReset('Grunt Task Failed. ', $branch)
+		$FailedMerges += $branch
 		continue	
 	}
 	
@@ -84,9 +84,7 @@ foreach ($b in $branches)
 	if ($workingfiles)
 	{
 		hardReset('working folder not empty', $branch)
-		#Write-Host 'working folder not empty' -ForegroundColor Red
-		#$FailedMerges += $branch
-		#git reset --hard
+		$FailedMerges += $branch
 	}
 	else
 	{
