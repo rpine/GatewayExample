@@ -74,6 +74,12 @@ foreach ($b in $branches)
 	git merge $selectedBranch
 	$gruntResult = grunt build
 	Write-Host 'Grunt task result: ', $gruntResult, ' Exit Code: ', $LastExitCode -ForegroundColor Blue
+	if ($LastExitCode -ne 0)
+	{
+		hardReset('Grunt Task Failed. ', $branch)
+		continue	
+	}
+	
 	$workingfiles = git status --porcelain
 	if ($workingfiles)
 	{
