@@ -8,6 +8,33 @@ function hardReset($msg, $branch)
 	git reset --hard
 }
 
+function doesLocalBranchExist($branch)
+{
+	$localBranch = (git branch --list $branch)
+	if ($localBranch)
+	{
+		return $true
+	}
+	else 
+	{
+		return $false
+	}
+		
+}
+
+function doesRemoteBranchExist($branch)
+{
+	$remoteBranch = (git ls-remote --heads origin $branch)
+	if ($remoteBranch)
+	{
+		return $true
+	}
+	else 
+	{
+		return $false
+	}
+}
+
 
 git checkout dev.updates
 #$frombranch = (
@@ -30,6 +57,18 @@ foreach ($b in $branches)
 {
 	$branch = $b.replace('*','').Trim()
 	Write-Host 'Working on branch: ', $branch -ForegroundColor DarkGreen
+    #Test to check if branch exists remotely 
+    $exists = doesRemoteBranchExist($branch)
+    if($exists)
+	{
+		Write-Host 'The branch exists remotely: ', $branch
+ 	}
+	$localExists = doesLocalBranchExist($branch)
+    if($localExists)
+	{
+		Write-Host 'The branch exists locally: ', $branch
+ 	}
+
 	git checkout $branch
 	git branch --list graph*
 	git merge $selectedBranch
