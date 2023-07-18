@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       },
       build: {
         src: 'src/*.js',
-        desta: 'release/<%= pkg.name %>.min.js'
+        dest: 'release/<%= pkg.name %>.min.js'
       }
     }
   });
